@@ -10,22 +10,24 @@ import java.time.LocalDate;
  *
  * @author Line's laptop
  */
-public class Chi {
+public class Term {
     private int id;
     private LocalDate date;
     private String title;
     private int price ;
     private String description;
+    private String type;
 
-    public Chi(int id, LocalDate date, String title, int price, String description) {
+    public Term(int id, LocalDate date, String title, int price, String description, String type) {
         this.id = id;
         this.date = date;
         this.title = title;
         this.price = price;
         this.description = description;
+        this.type = type;
     }
 
-    public Chi() {
+    public Term() {
     }
     
     
@@ -68,5 +70,12 @@ public class Chi {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    public String getType() {
+        return type;
+    }
 
+    public void setType(String type) {
+        this.type = type;
+    }
 }

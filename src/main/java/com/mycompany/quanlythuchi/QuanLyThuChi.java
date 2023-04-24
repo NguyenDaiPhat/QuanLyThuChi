@@ -4,6 +4,8 @@
 
 package com.mycompany.quanlythuchi;
 
+import View.Add;
+import View.Edit;
 import View.Home;
 
 /**
