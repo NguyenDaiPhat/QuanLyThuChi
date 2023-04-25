@@ -13,11 +13,19 @@ import java.sql.SQLException;
  * @author Line's laptop
  */
 public class JDBC {
-     public static Connection Connection() throws SQLException{
-        String username ="root";
-        String password = "";
-        String url = "jdbc:mysql://localhost:3306/QuanLyThuChi";
-        Connection connection = DriverManager.getConnection(url, username, password);
-        return connection;
+    public static Connection Connection() throws SQLException {
+        Connection conn = null;
+        String url = "jdbc:mysql://localhost:3306/QuanLyThuChi"; 
+        String user = "root"; 
+        String password = ""; 
+    
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+            System.out.println("Ket noi thanh cong toi csdl!");
+        } catch (SQLException e) {
+            System.out.println("Khong the ket noi toi csdl!");
+            e.printStackTrace();
+        }
+        return conn;
     }
 }
