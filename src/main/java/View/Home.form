@@ -94,31 +94,26 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="mess" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="thu" pref="141" max="32767" attributes="0"/>
+                                      <Component id="chi" max="32767" attributes="0"/>
+                                      <Component id="du" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="thu" pref="141" max="32767" attributes="0"/>
-                                              <Component id="chi" max="32767" attributes="0"/>
-                                              <Component id="du" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jLabelStartDate" max="32767" attributes="0"/>
+                                              <Component id="jLabelEndDate" pref="58" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="jLabelStartDate" max="32767" attributes="0"/>
-                                                      <Component id="jLabelEndDate" pref="58" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="endDate" alignment="0" min="-2" pref="175" max="-2" attributes="0"/>
-                                                      <Component id="startDate" alignment="1" min="-2" pref="175" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                                                  <Component id="search" min="-2" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="endDate" alignment="0" min="-2" pref="175" max="-2" attributes="0"/>
+                                              <Component id="startDate" alignment="1" min="-2" pref="175" max="-2" attributes="0"/>
                                           </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+                                          <Component id="search" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -128,6 +123,10 @@
                                       <Component id="jButton5" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="mess" min="-2" pref="380" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -228,6 +227,14 @@
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="mess">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="2"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
+                  </Properties>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPaneKhoanChi">
 
