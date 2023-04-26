@@ -23,10 +23,12 @@ public class Edit extends javax.swing.JFrame {
     private Term term;
     private TermDao termDao;
     public Edit(Term term, Home home) {
-        this.home = home;
+        termDao=new TermDao();
         this.term = term;
         initComponents();
+        this.home = home;
         type.setSelectedItem(term.getType());
+//        System.out.print(term.getType());
         date.setDate(new Date(term.getDate().getYear()-1900, term.getDate().getMonthValue()-1, term.getDate().getDayOfMonth()));
         title.setText(term.getTitle());
         price.setText(String.valueOf(term.getPrice()));
@@ -107,7 +109,7 @@ public class Edit extends javax.swing.JFrame {
         });
 
         type.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thu", "Chi" }));
+        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "thu", "chi" }));
         type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 typeActionPerformed(evt);
@@ -216,18 +218,17 @@ public class Edit extends javax.swing.JFrame {
         }
         else{
             LocalDate dateOfBirthU = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());
-            term = new Term();
-            term.setType(type.getSelectedItem().toString());
-            term.setDate(dateOfBirthU);
-            term.setTitle(title.getText());
-            term.setPrice(Integer.parseInt(price.getText()));
-            term.setDescription(description.getText());
-            termDao = new TermDao();
-            if(termDao.update(term)){
+            Term term1 = new Term();
+            term1.setId(term.getId());
+            term1.setType(type.getSelectedItem().toString());
+            term1.setDate(dateOfBirthU);
+            term1.setTitle(title.getText());
+            term1.setPrice(Integer.parseInt(price.getText()));
+            term1.setDescription(description.getText());
+            if(termDao.update(term1)){
                 JOptionPane.showMessageDialog(null, "Cập nhật thông tin thành công !", "Thành công",JOptionPane.INFORMATION_MESSAGE);
-//                home.resetTableTerms(startDatee, endDatee);
-                home.resetTableTermThus(home.startDatee, home.endDatee);
-                home.resetTableTermChis(home.startDatee, home.endDatee);
+                home.resetTableTerm(home.startDatee, home.endDatee);
+//                System.out.print(term.getDescription());
                 this.dispose();
             }
             else{

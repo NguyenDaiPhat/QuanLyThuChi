@@ -52,6 +52,7 @@ public class TermDao {
             preparedStatement.setString(5, term.getType());
             preparedStatement.setInt(6, term.getId());
             int result = preparedStatement.executeUpdate();
+            System.out.print(term.getId());
             connection.close();
             return true;
         } catch (Exception e) {
@@ -75,17 +76,16 @@ public class TermDao {
     
     public Term findByTermId(int id) {
         Term term = new Term();
-        String SQL = "SELECT * FROM `Term` WHERE 'id` = ?";
+        String SQL = "SELECT * FROM `Term` WHERE `id` = ?";
         try {
             Connection connection = JDBC.Connection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
-
             while (resultSet.next()) {
                 term.setId(resultSet.getInt("id"));
                 term.setDate(LocalDate.parse(resultSet.getString("date")));
-                term.setTitle(resultSet.getString("id"));
+                term.setTitle(resultSet.getString("title"));
                 term.setPrice(resultSet.getInt("price"));
                 term.setDescription(resultSet.getString("description"));
                 term.setType(resultSet.getString("type"));

@@ -220,8 +220,7 @@ public class Add extends javax.swing.JFrame {
             if(termDao.save(term)){
                 JOptionPane.showMessageDialog(null, "Thêm mới khoản " + term.getType()+" thành công !", "Thành công",JOptionPane.INFORMATION_MESSAGE);
 //                home.resetTableTerms(home.startDatee, home.endDatee);
-                home.resetTableTermThus(home.startDatee, home.endDatee);
-                home.resetTableTermChis(home.startDatee, home.endDatee);
+                home.resetTableTerm(home.startDatee, home.endDatee);
                 this.dispose();
             }
             else{

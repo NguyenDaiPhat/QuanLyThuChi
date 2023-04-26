@@ -78,4 +78,15 @@ public class Term {
     public void setType(String type) {
         this.type = type;
     }
+    
+    public String getXMLString() {
+        return "<term>\n" +
+"		<id>"+id+"</id>\n" +
+"		<date>"+date+"</date>\n" +
+"		<title>"+title+"</title>\n" +
+"		<price>"+price+"</price>\n" +
+"               <description>"+description+"</description>\n" +
+"               <type>"+type+"</type>\n" +
+"	</student>";
+    }
 }
