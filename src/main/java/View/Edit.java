@@ -28,7 +28,6 @@ public class Edit extends javax.swing.JFrame {
         initComponents();
         this.home = home;
         type.setSelectedItem(term.getType());
-//        System.out.print(term.getType());
         date.setDate(new Date(term.getDate().getYear()-1900, term.getDate().getMonthValue()-1, term.getDate().getDayOfMonth()));
         title.setText(term.getTitle());
         price.setText(String.valueOf(term.getPrice()));
@@ -218,22 +217,23 @@ public class Edit extends javax.swing.JFrame {
         }
         else{
             LocalDate dateOfBirthU = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());
-            Term term1 = new Term();
-            term1.setId(term.getId());
-            term1.setType(type.getSelectedItem().toString());
-            term1.setDate(dateOfBirthU);
-            term1.setTitle(title.getText());
-            term1.setPrice(Integer.parseInt(price.getText()));
-            term1.setDescription(description.getText());
-            if(termDao.update(term1)){
-                JOptionPane.showMessageDialog(null, "Cập nhật thông tin thành công !", "Thành công",JOptionPane.INFORMATION_MESSAGE);
-                home.resetTableTerm(home.startDatee, home.endDatee);
-//                System.out.print(term.getDescription());
-                this.dispose();
+            for(Term term1 : home.listTerm){
+                if(term1.getId() == term.getId()){
+                    term1.setType(type.getSelectedItem().toString());
+                    term1.setDate(dateOfBirthU);
+                    term1.setTitle(title.getText());
+                    term1.setPrice(Integer.parseInt(price.getText()));
+                    term1.setDescription(description.getText());
+                }
             }
-            else{
-                JOptionPane.showMessageDialog(null, "Cập nhật thông tin thất bại !", "Thất bại", JOptionPane.ERROR_MESSAGE);
-            }
+//            if(termDao.update(term1)){
+//                JOptionPane.showMessageDialog(null, "Cập nhật thông tin thành công !", "Thành công",JOptionPane.INFORMATION_MESSAGE);
+//                home.resetTableTerm(home.startDatee, home.endDatee);
+//                this.dispose();
+//            }
+//            else{
+//                JOptionPane.showMessageDialog(null, "Cập nhật thông tin thất bại !", "Thất bại", JOptionPane.ERROR_MESSAGE);
+//            }
         }
     }//GEN-LAST:event_editMouseClicked
 

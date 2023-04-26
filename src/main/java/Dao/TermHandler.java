@@ -5,50 +5,62 @@
 package Dao;
 
 import Entity.Term;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.jar.Attributes;
+import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
 
 /**
  *
  * @author Line's laptop
  */
 public class TermHandler extends DefaultHandler{
-     List<Term> termList = new ArrayList<>();
+    List<Term> termList = new ArrayList<>();
     Term currentTerm = null;
     
-    boolean isRollNo = false, isFullname = false, isGender = false, isAddress = false;
+    boolean isId = false, isDate = false, isTitle = false, isPrice = false, isDescription, isType;
     
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        if(qName.equalsIgnoreCase("student")) {
+        if(qName.equalsIgnoreCase("term")) {
             currentTerm = new Term();
-        } else if(qName.equalsIgnoreCase("rollNo")) {
-            isRollNo = true;
-        } else if(qName.equalsIgnoreCase("fullname")) {
-            isFullname = true;
-        } else if(qName.equalsIgnoreCase("gender")) {
-            isGender = true;
-        } else if(qName.equalsIgnoreCase("address")) {
-            isAddress = true;
+        } else if(qName.equalsIgnoreCase("id")) {
+            isId = true;
+        } else if(qName.equalsIgnoreCase("date")) {
+            isDate = true;
+        } else if(qName.equalsIgnoreCase("title")) {
+            isTitle = true;
+        } else if(qName.equalsIgnoreCase("price")) {
+            isPrice = true;
+        }
+        else if(qName.equalsIgnoreCase("description")) {
+            isDescription = true;
+        }
+        else if(qName.equalsIgnoreCase("type")) {
+            isType = true;
         }
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        if(qName.equalsIgnoreCase("student")) {
-            studentList.add(currentTerm);
+        if(qName.equalsIgnoreCase("term")) {
+            termList.add(currentTerm);
             currentTerm = null;
-        } else if(qName.equalsIgnoreCase("rollNo")) {
-            isRollNo = false;
-        } else if(qName.equalsIgnoreCase("fullname")) {
-            isFullname = false;
-        } else if(qName.equalsIgnoreCase("gender")) {
-            isGender = false;
-        } else if(qName.equalsIgnoreCase("address")) {
-            isAddress = false;
+        } else if(qName.equalsIgnoreCase("id")) {
+            isId = false;
+        } else if(qName.equalsIgnoreCase("date")) {
+            isDate = false;
+        } else if(qName.equalsIgnoreCase("title")) {
+            isTitle = false;
+        } else if(qName.equalsIgnoreCase("price")) {
+            isPrice = false;
+        }else if(qName.equalsIgnoreCase("description")) {
+            isDescription = false;
+        }else if(qName.equalsIgnoreCase("type")) {
+            isType = false;
         }
     }
 
@@ -57,15 +69,17 @@ public class TermHandler extends DefaultHandler{
         String value = new String(ch, start, length);
         
         if(isId) {
-            currentTerm.setId(value);
+            currentTerm.setId(Integer.parseInt(value));
         } else if(isDate) {
-            currentTerm.setDate(value);
+            currentTerm.setDate(LocalDate.parse(value));
         } else if(isTitle) {
             currentTerm.setTitle(value);
         } else if(isPrice) {
-            currentTerm.setPrice(value);
+            currentTerm.setPrice(Integer.parseInt(value));
         }else if(isDescription) {
             currentTerm.setDescription(value);
+        }else if(isType) {
+            currentTerm.setType(value);
         }
     }
 

@@ -211,21 +211,32 @@ public class Add extends javax.swing.JFrame {
         else {
             LocalDate dateOfBirthU = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());Term term = new Term();
             term = new Term();
+            int idd = home.tbChi.getRowCount() + home.tbThu.getRowCount()+1;
+            term.setId(idd);
             term.setType(type.getSelectedItem().toString());
             term.setDate(dateOfBirthU);
             term.setTitle(name.getText());
             term.setPrice(Integer.parseInt(price.getText()));
             term.setDescription(description.getText());
-            termDao = new TermDao();
-            if(termDao.save(term)){
-                JOptionPane.showMessageDialog(null, "Thêm mới khoản " + term.getType()+" thành công !", "Thành công",JOptionPane.INFORMATION_MESSAGE);
-//                home.resetTableTerms(home.startDatee, home.endDatee);
-                home.resetTableTerm(home.startDatee, home.endDatee);
+            home.termList.add(term);
+//            System.out.println(type.getSelectedItem().toString());
+            if(type.getSelectedItem().toString().equals("Thu")){
+                home.tbThu.addRow(new Object[]{idd, term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
                 this.dispose();
             }
             else{
-                JOptionPane.showMessageDialog(null, "Thêm mới khoản " + term.getType()+" thất bại !", "Thất bại", JOptionPane.ERROR_MESSAGE);
+                home.tbChi.addRow(new Object[]{idd, term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
+                this.dispose();
             }
+//            termDao = new TermDao();
+//            if(termDao.save(term)){
+//                JOptionPane.showMessageDialog(null, "Thêm mới khoản " + term.getType()+" thành công !", "Thành công",JOptionPane.INFORMATION_MESSAGE);
+//                home.resetTableTerm(home.startDatee, home.endDatee);
+//                this.dispose();
+//            }
+//            else{
+//                JOptionPane.showMessageDialog(null, "Thêm mới khoản " + term.getType()+" thất bại !", "Thất bại", JOptionPane.ERROR_MESSAGE);
+//            }
         }
     }//GEN-LAST:event_addMouseClicked
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<termList>
+<term>
+		<id>1</id>
+		<date>2023-04-27</date>
+		<title>êrf</title>
+		<price>12</price>
+               <description>ử</description>
+               <type>Thu</type>
+	</term><term>
+		<id>2</id>
+		<date>2023-04-27</date>
+		<title>dfs</title>
+		<price>123</price>
+               <description>sdrfs</description>
+               <type>Thu</type>
+	</term><term>
+		<id>3</id>
+		<date>2023-04-27</date>
+		<title>asdr</title>
+		<price>123</price>
+               <description>drfs</description>
+               <type>Chi</type>
+	</term>
+</termList>

@@ -102,9 +102,6 @@ public class TermDao {
         if(starDate != null && endDate != null) {
             where += "WHERE `date` BETWEEN '"+ Date.valueOf(starDate).toString()+ "' AND '" + Date.valueOf(endDate).toString()+"'";     
         }
-//        else if(Date.valueOf(starDate).toString() == null || Date.valueOf(endDate).toString() == null){
-//            where ="";
-//        }
         String SQL = "SELECT * FROM `Term` " + where ;
         try {
             Connection connection = JDBC.Connection();
@@ -132,11 +129,11 @@ public class TermDao {
     
     public List<Term> search(LocalDate date){
         List<Term> listTerm = new ArrayList<>();
-        String SQL = "SELECT * FROM `Term` where `date` = `?`" ;
+        String SQL = "SELECT * FROM `Term` where `date` = ?" ;
         try {
             Connection connection = JDBC.Connection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-//            preparedStatement.setString(1, date.toString());
+            preparedStatement.setString(1, date.toString());
 //            System.out.println(Date.valueOf(date).toString()+ "cc");
             ResultSet resultSet = preparedStatement.executeQuery();
             
@@ -144,7 +141,7 @@ public class TermDao {
                 Term term = new Term();
                 term.setId(resultSet.getInt("id"));
                 term.setDate(LocalDate.parse(resultSet.getString("date")));
-                term.setTitle(resultSet.getString("id"));
+                term.setTitle(resultSet.getString("title"));
                 term.setPrice(resultSet.getInt("price"));
                 term.setDescription(resultSet.getString("description"));
                 term.setType(resultSet.getString("type"));

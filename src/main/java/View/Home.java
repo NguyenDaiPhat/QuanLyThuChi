@@ -9,6 +9,7 @@ import Dao.TermHandler;
 import Entity.Term;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -33,19 +34,18 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
-    DefaultTableModel tbThu;
-    DefaultTableModel tbChi;
+    public DefaultTableModel tbThu ;
+    public DefaultTableModel tbChi;
     List<Term> termList = new ArrayList<>();
     private TermDao termDao;
     private Term term;
-    private List<Term> listTerm;
     private int tongThu;
     private int tongChi;
     private int tongDu;
     LocalDate startDatee;
     LocalDate endDatee;
     LocalDate datee;
-    Date currentDate;
+//    Date currentDate;
     public Home() {
         initComponents();
         termDao = new TermDao();
@@ -53,8 +53,9 @@ public class Home extends javax.swing.JFrame {
         tbThu = (DefaultTableModel) tableThu.getModel();
         tbChi = (DefaultTableModel) tableChi.getModel();
         date.setDate(new java.util.Date());
+        
+//        resetTableTerm(startDatee, endDatee);  //sql
 //        tableModel = (DefaultTableModel) tableChi.getModel();
-        resetTableTerm(startDatee, endDatee);
 //        resetTableTermChis(startDatee, endDatee);
 //        date.setDate(new Date(term.getDate().getYear()-1900, term.getDate().getMonthValue()-1, term.getDate().getDayOfMonth()));
 //        Date currentDate = new Date(); 
@@ -293,11 +294,11 @@ public class Home extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabelTongDu1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,15 +327,15 @@ public class Home extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap()
                 .addComponent(jLabelTongDu4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelTongDu5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(yearOfPublisher1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,11 +359,11 @@ public class Home extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
+                .addContainerGap()
                 .addComponent(jLabelTongDu7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(yearOfPublisher2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,18 +382,18 @@ public class Home extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(thongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(thongKe)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(thongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 41, Short.MAX_VALUE))
+                .addComponent(thongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 45, Short.MAX_VALUE))
         );
 
         jTabbedPane2.getAccessibleContext().setAccessibleName("Tháng");
@@ -460,7 +461,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         exportBtn.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        exportBtn.setText("Xuất File");
+        exportBtn.setText("Lưu");
         exportBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 exportBtnMouseClicked(evt);
@@ -609,7 +610,7 @@ public class Home extends javax.swing.JFrame {
          FileInputStream fis = null;
         try {
             // TODO add your handling code here:
-            fis = new FileInputStream("student.xml");
+            fis = new FileInputStream("term.xml");
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();
             
@@ -619,13 +620,21 @@ public class Home extends javax.swing.JFrame {
             
             termList = handler.getTermList();
             
-            tableModel.setRowCount(0);
-            
+            tbThu.setRowCount(0);
+            tongThu =0;
             for (Term term : termList) {
-                tableModel.addRow(new Object[] {
-                    term.getId(), term.getDate(),
-                    term.getTitle(), term.getPrice(), term.getDescription()
-                });
+                if(term.getType().equals("Thu")){
+                    tongThu += term.getPrice();
+                    tbThu.addRow(new Object[]{term.getId(), term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
+                }
+            }
+            tbChi.setRowCount(0);
+            tongChi =0;
+            for (Term term : termList) {
+                if(term.getType().equals("Chi")){
+                    tongChi += term.getPrice();
+                    tbChi.addRow(new Object[]{term.getId(), term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
+                }
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
@@ -658,8 +667,16 @@ public class Home extends javax.swing.JFrame {
             }catch(Exception e){
                 id = Integer.parseInt(tableChi.getModel().getValueAt(tableChi.getSelectedRow(), 0).toString());
             }
-            term = termDao.findByTermId(id);
-            System.out.print(id);
+//            term = termDao.findByTermId(id);
+            try{
+                for(Term termm : termList){
+                    if(termm.getId() == id) {term = termm;return;}
+                }
+            }catch(Exception e){
+                
+            }
+            
+//            System.out.print(id);
         }
         Edit edit = new Edit(term, this);
         edit.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -701,8 +718,7 @@ public class Home extends javax.swing.JFrame {
         datee = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());
 //        resetTableTermThus(startDatee, endDatee);
 //        resetTableTermChis(startDatee, endDatee);
-        thongKeTermThus(datee);
-        thongKeTermChis(datee);
+        thongKeTerm(datee);
     }//GEN-LAST:event_thongKeMouseClicked
 
     private void textSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSearchActionPerformed
@@ -719,6 +735,38 @@ public class Home extends javax.swing.JFrame {
 
     private void exportBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exportBtnMouseClicked
         // TODO add your handling code here:
+        StringBuilder builder = new StringBuilder();
+        for (Term termm : termList) {
+            builder.append(termm.getXMLString());
+        }
+        
+        String body = builder.toString();
+        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                    "<termList>\n" +
+                                    body+
+                    "\n</termList>";
+        //save into file student.xml
+        FileOutputStream fos = null;
+        
+        try {
+            fos = new FileOutputStream("term.xml");
+            
+            byte[] data = xml.getBytes();
+            
+            fos.write(data);
+        } catch(Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
+        JOptionPane.showMessageDialog(rootPane, "Save success!!!");
     }//GEN-LAST:event_exportBtnMouseClicked
 
     private void exportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportBtnActionPerformed
@@ -744,58 +792,45 @@ public class Home extends javax.swing.JFrame {
     
     public void resetTableTerm(LocalDate startDate, LocalDate endDate) {
         mess.setText("");
-        listTerm = termDao.search(startDate, endDate);
+//        listTerm = termDao.search(startDate, endDate);
         tbThu.setRowCount(0);
         tongThu =0;
-        for (Term term : listTerm) {
+        for (Term term : termList) {
             if(term.getType().equals("thu")){
                 tongThu += term.getPrice();
-                
                 tbThu.addRow(new Object[]{term.getId(), term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
             }
         }
         tbChi.setRowCount(0);
         tongChi =0;
-        for (Term term : listTerm) {
+        for (Term term : termList) {
             if(term.getType().equals("chi")){
                 tongChi += term.getPrice();
-                
                 tbChi.addRow(new Object[]{term.getId(), term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
             }
         }
         resetPrice();
     }
     
-    public void thongKeTermThus(LocalDate datee) {
-        TermDao termDaoo = new TermDao();
-        List<Term> listTerms = termDaoo.search( datee);
-        DefaultTableModel tbThu = (DefaultTableModel) tableThu.getModel();
+    public void thongKeTerm(LocalDate date) {
+        mess.setText("");
+        List<Term> listTerms = termDao.search( date);
         tbThu.setRowCount(0);
         tongThu =0;
-        for (Term term : listTerm) {
+        for (Term term : termList) {
             if(term.getType().equals("thu")){
                 tongThu += term.getPrice();
-                
                 tbThu.addRow(new Object[]{term.getId(), term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
             }
-            
         }
-        resetPrice();
-    }
-    
-    public void thongKeTermChis(LocalDate datee) {
-        TermDao termDaoo = new TermDao();
-        List<Term> listTerms = termDaoo.search( datee);
-        DefaultTableModel tbChi = (DefaultTableModel) tableChi.getModel();
         tbChi.setRowCount(0);
         tongChi =0;
-        for (Term term : listTerm) {
+        for (Term term : termList) {
             if(term.getType().equals("chi")){
                 tongChi += term.getPrice();
                 
                 tbChi.addRow(new Object[]{term.getId(), term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
             }
-            
         }
         resetPrice();
     }
