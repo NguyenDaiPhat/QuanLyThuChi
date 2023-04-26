@@ -211,13 +211,12 @@ public class Edit extends javax.swing.JFrame {
 
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
         // TODO add your handling code here:
-        mess.setText("");
         if(price.getText().equals("")){
             mess.setText("Bạn cần nhập giá tiền");
         }
         else{
             LocalDate dateOfBirthU = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());
-            for(Term term1 : home.listTerm){
+            for(Term term1 : home.termList){
                 if(term1.getId() == term.getId()){
                     term1.setType(type.getSelectedItem().toString());
                     term1.setDate(dateOfBirthU);
@@ -235,6 +234,8 @@ public class Edit extends javax.swing.JFrame {
 //                JOptionPane.showMessageDialog(null, "Cập nhật thông tin thất bại !", "Thất bại", JOptionPane.ERROR_MESSAGE);
 //            }
         }
+        home.resetTable();
+        this.dispose();
     }//GEN-LAST:event_editMouseClicked
 
     

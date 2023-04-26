@@ -104,7 +104,7 @@ public class Add extends javax.swing.JFrame {
         });
 
         type.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thu", "Chi" }));
+        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "thu", "chi" }));
         type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 typeActionPerformed(evt);
@@ -228,6 +228,7 @@ public class Add extends javax.swing.JFrame {
                 home.tbChi.addRow(new Object[]{idd, term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
                 this.dispose();
             }
+            home.resetTable();
 //            termDao = new TermDao();
 //            if(termDao.save(term)){
 //                JOptionPane.showMessageDialog(null, "Thêm mới khoản " + term.getType()+" thành công !", "Thành công",JOptionPane.INFORMATION_MESSAGE);

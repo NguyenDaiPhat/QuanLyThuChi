@@ -6,20 +6,27 @@
 		<title>êrf</title>
 		<price>12</price>
                <description>ử</description>
-               <type>Thu</type>
+               <type>thu</type>
 	</term><term>
 		<id>2</id>
 		<date>2023-04-27</date>
 		<title>dfs</title>
 		<price>123</price>
                <description>sdrfs</description>
-               <type>Thu</type>
+               <type>thu</type>
 	</term><term>
 		<id>3</id>
 		<date>2023-04-27</date>
 		<title>asdr</title>
 		<price>123</price>
                <description>drfs</description>
-               <type>Chi</type>
+               <type>chi</type>
+	</term><term>
+		<id>5</id>
+		<date>2023-04-27</date>
+		<title>sadr</title>
+		<price>12000</price>
+               <description>awesaddfg</description>
+               <type>thu</type>
 	</term>
 </termList>

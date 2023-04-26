@@ -46,12 +46,16 @@
                       <Component id="jScrollPaneKhoanThu3" alignment="0" max="32767" attributes="0"/>
                       <Component id="jScrollPaneKhoanChi3" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="mess" min="-2" pref="270" max="-2" attributes="0"/>
-                              <Component id="jTabbedPane1" min="-2" pref="279" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                  <Component id="mess" min="-2" pref="240" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jTabbedPane1" min="-2" pref="249" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel1" min="-2" pref="263" max="-2" attributes="0"/>
+                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -61,15 +65,15 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="jTabbedPane1" min="-2" pref="193" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jTabbedPane1" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="mess" min="-2" pref="19" max="-2" attributes="0"/>
+                          <Component id="mess" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="9" max="32767" attributes="0"/>
                   <Component id="jScrollPaneKhoanChi3" min="-2" pref="192" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPaneKhoanThu3" min="-2" pref="192" max="-2" attributes="0"/>
@@ -182,31 +186,24 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jLabelStartDate" max="32767" attributes="0"/>
-                                          <Component id="jLabelEndDate" pref="79" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="endDate" min="-2" pref="175" max="-2" attributes="0"/>
-                                          <Component id="startDate" min="-2" pref="175" max="-2" attributes="0"/>
-                                      </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabelEndDate" max="32767" attributes="0"/>
+                                      <Component id="jLabelStartDate" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jLabel3" max="32767" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="typeSearch" min="-2" pref="175" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="endDate" min="-2" pref="175" max="-2" attributes="0"/>
+                                      <Component id="startDate" min="-2" pref="175" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="textSearch" min="-2" pref="169" max="-2" attributes="0"/>
+                                  <Component id="textSearch" min="-2" pref="140" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="search" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                          <EmptySpace pref="12" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -222,11 +219,6 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="endDate" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="jLabelEndDate" min="-2" pref="31" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel3" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="typeSearch" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -277,31 +269,6 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textSearchActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="typeSearch">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="T&#x1ea5;t c&#x1ea3;"/>
-                        <StringItem index="1" value="M&#xe3;"/>
-                        <StringItem index="2" value="T&#xea;n"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="typeSearchActionPerformed"/>
-                  </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel3">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Lo&#x1ea1;i"/>
-                  </Properties>
-                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel3">
@@ -316,7 +283,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTabbedPane2" alignment="0" pref="279" max="32767" attributes="0"/>
+                      <Component id="jTabbedPane2" alignment="0" pref="249" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="thongKe" min="-2" max="-2" attributes="0"/>
@@ -330,7 +297,7 @@
                           <Component id="jTabbedPane2" min="-2" pref="80" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="thongKe" min="-2" pref="31" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="45" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -376,8 +343,8 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabelTongDu1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="date" min="-2" pref="175" max="-2" attributes="0"/>
-                                  <EmptySpace pref="64" max="32767" attributes="0"/>
+                                  <Component id="date" min="-2" pref="132" max="-2" attributes="0"/>
+                                  <EmptySpace pref="77" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -433,7 +400,7 @@
                                   <Component id="jLabelTongDu5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="yearOfPublisher1" min="-2" pref="54" max="-2" attributes="0"/>
-                                  <EmptySpace pref="88" max="32767" attributes="0"/>
+                                  <EmptySpace pref="58" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -491,7 +458,7 @@
                                   <Component id="jLabelTongDu7" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="yearOfPublisher2" min="-2" pref="54" max="-2" attributes="0"/>
-                                  <EmptySpace pref="187" max="32767" attributes="0"/>
+                                  <EmptySpace pref="157" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -540,31 +507,29 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabelTongChi" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jLabelTongThu" alignment="1" pref="66" max="32767" attributes="0"/>
+                          <Component id="jLabelTongDu" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jLabelTongChi" max="32767" attributes="0"/>
-                                  <Component id="jLabelTongThu" pref="66" max="32767" attributes="0"/>
-                                  <Component id="jLabelTongDu" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="du" alignment="0" pref="86" max="32767" attributes="0"/>
                                   <Component id="chi" alignment="0" max="32767" attributes="0"/>
                                   <Component id="thu" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="du" alignment="0" pref="176" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="add" min="-2" pref="66" max="-2" attributes="0"/>
+                                  <Component id="edit" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="delete" alignment="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="importBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               <Component id="exportBtn" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="add" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="edit" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="delete" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -575,49 +540,39 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabelTongThu" pref="31" max="32767" attributes="0"/>
-                          <Component id="thu" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabelTongThu" pref="31" max="32767" attributes="0"/>
+                                      <Component id="thu" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="add" min="-2" pref="31" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabelTongChi" pref="31" max="32767" attributes="0"/>
+                                  <Component id="chi" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="edit" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabelTongChi" pref="31" max="32767" attributes="0"/>
-                          <Component id="chi" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabelTongDu" pref="31" max="32767" attributes="0"/>
-                          <Component id="du" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="add" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="edit" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="delete" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabelTongDu" pref="31" max="32767" attributes="0"/>
+                              <Component id="du" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="delete" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="importBtn" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="exportBtn" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="exportBtn" min="-2" pref="31" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="importBtn">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="2"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Nh&#x1ead;p File"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="importBtnMouseClicked"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="importBtnActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JButton" name="edit">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
