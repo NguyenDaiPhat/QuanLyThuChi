@@ -47,6 +47,7 @@ public class Home extends javax.swing.JFrame {
     public DefaultTableModel tbThu ;
     public DefaultTableModel tbChi;
     List<Term> termList = new ArrayList<>();
+    List<Term> termsInRange = new ArrayList<>();
     private TermDao termDao;
     private Term term;
     public int tongThu;
@@ -59,6 +60,14 @@ public class Home extends javax.swing.JFrame {
     int currentYear = LocalDate.now().getYear();
     public Home() {
         initComponents();
+        JPanel panel = (JPanel)jTabbedPaneThongKe.getComponent(1); // Lấy panel đầu tiên trong JTablePanel
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Xử lý sự kiện khi bấm vào panel
+                System.out.println("Panel được bấm vào!");
+            }
+        });
         termDao = new TermDao();
         term = new Term();
         tbThu = (DefaultTableModel) tableThu.getModel();
@@ -67,14 +76,6 @@ public class Home extends javax.swing.JFrame {
         nam1.setValue(currentYear);
         nam2.setValue(currentYear);
         thang.setValue(currentMonth);
-        JPanel panel = (JPanel)jTabbedPaneThongKe.getComponent(0);
-        panel.addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            // Xử lý sự kiện khi bấm vào panel
-            System.out.println("Panel được bấm vào!");
-        }
-        });
         start();
         Term minDate = Collections.min(termList, Comparator.comparing(Term::getDate));
         Term maxDate = Collections.max(termList, Comparator.comparing(Term::getDate));
@@ -206,6 +207,11 @@ public class Home extends javax.swing.JFrame {
         jScrollPaneKhoanChi3.setViewportView(tableChi);
 
         jTabbedPane1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
 
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -290,6 +296,11 @@ public class Home extends javax.swing.JFrame {
 
         jTabbedPaneThongKe.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         jTabbedPaneThongKe.setPreferredSize(new java.awt.Dimension(712, 426));
+        jTabbedPaneThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPaneThongKeMouseClicked(evt);
+            }
+        });
 
         jLabelTongDu1.setText("Ngày");
 
@@ -656,7 +667,7 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         startDatee = LocalDate.of(startDate.getDate().getYear()+1900,startDate.getDate().getMonth()+1,startDate.getDate().getDate());
         endDatee = LocalDate.of(endDate.getDate().getYear()+1900,endDate.getDate().getMonth()+1,endDate.getDate().getDate());
-        List<Term> termsInRange = getTermsInRange(termList, startDatee, endDatee);
+        termsInRange = getTermsInRange(termList, startDatee, endDatee);
         if(!textSearch.getText().equals("")){
             for (int i = 0; i < termsInRange.size(); i++) {
                 Term termm = termsInRange.get(i);
@@ -689,7 +700,10 @@ public class Home extends javax.swing.JFrame {
 //        for(int i  = 0; i< termList.size(); i++){
 //            System.out.println(termList.get(i).getDate().getMonthValue());
 //        }
-        datee = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());
+        thongKeReset();
+    }//GEN-LAST:event_thongKeMouseClicked
+public void thongKeReset(){
+    datee = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());
         int currentMonth = (int) thang.getValue();
         int currentYear1 = (int) nam1.getValue();
         int currentYear2 = (int) nam2.getValue();  
@@ -701,8 +715,7 @@ public class Home extends javax.swing.JFrame {
         }else if(selectedTabIndex == 2){
             thongKeTerm(currentYear2);
         }
-    }//GEN-LAST:event_thongKeMouseClicked
-
+}
     private void textSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textSearchActionPerformed
@@ -757,6 +770,22 @@ public class Home extends javax.swing.JFrame {
         add.setVisible(true);
         add.setLocationRelativeTo(null);
     }//GEN-LAST:event_addMouseClicked
+
+    private void jTabbedPaneThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneThongKeMouseClicked
+        // TODO add your handling code here:
+        thongKeReset();
+    }//GEN-LAST:event_jTabbedPaneThongKeMouseClicked
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        // TODO add your handling code here:
+        int selectedTabIndex = jTabbedPane1.getSelectedIndex();
+        if(selectedTabIndex == 1){
+            thongKeReset();
+        }
+        else if(selectedTabIndex == 0){
+            resetTable(termsInRange);
+        }
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     public void resetPrice(){
         tongDu = tongThu - tongChi;
