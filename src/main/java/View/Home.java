@@ -7,6 +7,8 @@ package View;
 import Dao.TermDao;
 import Dao.TermHandler;
 import Entity.Term;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -24,6 +26,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
@@ -64,6 +67,14 @@ public class Home extends javax.swing.JFrame {
         nam1.setValue(currentYear);
         nam2.setValue(currentYear);
         thang.setValue(currentMonth);
+        JPanel panel = (JPanel)jTabbedPaneThongKe.getComponent(0);
+        panel.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            // Xử lý sự kiện khi bấm vào panel
+            System.out.println("Panel được bấm vào!");
+        }
+        });
         start();
         Term minDate = Collections.min(termList, Comparator.comparing(Term::getDate));
         Term maxDate = Collections.max(termList, Comparator.comparing(Term::getDate));
@@ -109,15 +120,15 @@ public class Home extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         thongKe = new javax.swing.JButton();
         jTabbedPaneThongKe = new javax.swing.JTabbedPane();
-        jPanel4 = new javax.swing.JPanel();
+        panelNgay = new javax.swing.JPanel();
         jLabelTongDu1 = new javax.swing.JLabel();
         date = new com.toedter.calendar.JDateChooser();
-        jPanel5 = new javax.swing.JPanel();
+        panelThang = new javax.swing.JPanel();
         jLabelTongDu2 = new javax.swing.JLabel();
         thang = new javax.swing.JSpinner();
         jLabelTongDu3 = new javax.swing.JLabel();
         nam1 = new javax.swing.JSpinner();
-        jPanel6 = new javax.swing.JPanel();
+        panelNam = new javax.swing.JPanel();
         jLabelTongDu7 = new javax.swing.JLabel();
         nam2 = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
@@ -285,38 +296,38 @@ public class Home extends javax.swing.JFrame {
         date.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         date.setMinSelectableDate(new java.util.Date(-62135791128000L));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelNgayLayout = new javax.swing.GroupLayout(panelNgay);
+        panelNgay.setLayout(panelNgayLayout);
+        panelNgayLayout.setHorizontalGroup(
+            panelNgayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNgayLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelTongDu1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(77, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        panelNgayLayout.setVerticalGroup(
+            panelNgayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNgayLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelNgayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelTongDu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(date, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jTabbedPaneThongKe.addTab("Ngày", jPanel4);
+        jTabbedPaneThongKe.addTab("Ngày", panelNgay);
 
         jLabelTongDu2.setText("Tháng");
 
         jLabelTongDu3.setText("Năm");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelThangLayout = new javax.swing.GroupLayout(panelThang);
+        panelThang.setLayout(panelThangLayout);
+        panelThangLayout.setHorizontalGroup(
+            panelThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelThangLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelTongDu2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -327,45 +338,45 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(nam1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        panelThangLayout.setVerticalGroup(
+            panelThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelThangLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelTongDu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(thang, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(panelThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelTongDu3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(nam1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
-        jTabbedPaneThongKe.addTab("Tháng", jPanel5);
+        jTabbedPaneThongKe.addTab("Tháng", panelThang);
 
         jLabelTongDu7.setText("Năm");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelNamLayout = new javax.swing.GroupLayout(panelNam);
+        panelNam.setLayout(panelNamLayout);
+        panelNamLayout.setHorizontalGroup(
+            panelNamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNamLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelTongDu7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nam2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(147, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        panelNamLayout.setVerticalGroup(
+            panelNamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNamLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelNamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTongDu7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nam2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPaneThongKe.addTab("Năm", jPanel6);
+        jTabbedPaneThongKe.addTab("Năm", panelNam);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -678,9 +689,6 @@ public class Home extends javax.swing.JFrame {
 //        for(int i  = 0; i< termList.size(); i++){
 //            System.out.println(termList.get(i).getDate().getMonthValue());
 //        }
-        startThongKe();
-    }//GEN-LAST:event_thongKeMouseClicked
-    public void startThongKe(){
         datee = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());
         int currentMonth = (int) thang.getValue();
         int currentYear1 = (int) nam1.getValue();
@@ -693,7 +701,8 @@ public class Home extends javax.swing.JFrame {
         }else if(selectedTabIndex == 2){
             thongKeTerm(currentYear2);
         }
-    }
+    }//GEN-LAST:event_thongKeMouseClicked
+
     private void textSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textSearchActionPerformed
@@ -752,6 +761,7 @@ public class Home extends javax.swing.JFrame {
     public void resetPrice(){
         tongDu = tongThu - tongChi;
         if(tongDu <0) mess.setText("SOS, tiền chi nhiều hơn thu");
+        else mess.setText("");
         thu.setText(String.valueOf(tongThu));
         chi.setText(String.valueOf(tongChi));
         du.setText(String.valueOf(tongDu));
@@ -769,7 +779,7 @@ public class Home extends javax.swing.JFrame {
             parser.parse(fis, handler);
             termList = handler.getTermList();
             resetTable(termList);
-            startThongKe();
+//            startThongKe();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {
@@ -790,21 +800,17 @@ public class Home extends javax.swing.JFrame {
     
     public void resetTable(List<Term> termList){
         tbThu.setRowCount(0);
-            tongThu =0;
-            for (Term term : termList) {
-                if(term.getType().equals("thu")){
-                    tongThu += term.getPrice();
-                    tbThu.addRow(new Object[]{term.getId(), term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
-                }
+        tbChi.setRowCount(0);
+        tongThu =0;tongChi =0;
+        for (Term term : termList) {
+            if(term.getType().equals("thu")){
+                tongThu += term.getPrice();
+                tbThu.addRow(new Object[]{term.getId(), term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
+            }else if(term.getType().equals("chi")){
+                tongChi += term.getPrice();
+                tbChi.addRow(new Object[]{term.getId(), term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
             }
-            tbChi.setRowCount(0);
-            tongChi =0;
-            for (Term term : termList) {
-                if(term.getType().equals("chi")){
-                    tongChi += term.getPrice();
-                    tbChi.addRow(new Object[]{term.getId(), term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
-                }
-            }
+        }
         resetPrice();
     }
     
@@ -840,6 +846,7 @@ public class Home extends javax.swing.JFrame {
         }
         resetTable(termList1);
     }
+    
     public void thongKeTerm(int month, int nam1){
         List<Term> termList1 = new ArrayList<>();
         for(int i  = 0; i< termList.size(); i++){
@@ -918,9 +925,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPaneKhoanChi3;
     private javax.swing.JScrollPane jScrollPaneKhoanThu3;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -928,6 +932,9 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel mess;
     private javax.swing.JSpinner nam1;
     private javax.swing.JSpinner nam2;
+    private javax.swing.JPanel panelNam;
+    private javax.swing.JPanel panelNgay;
+    private javax.swing.JPanel panelThang;
     private javax.swing.JButton search;
     private com.toedter.calendar.JDateChooser startDate;
     private javax.swing.JTable tableChi;
