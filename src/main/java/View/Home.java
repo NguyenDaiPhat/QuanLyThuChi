@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -64,10 +65,13 @@ public class Home extends javax.swing.JFrame {
         nam2.setValue(currentYear);
         thang.setValue(currentMonth);
         start();
-        Term earliestTerm = Collections.min(termList, Comparator.comparing(Term::getDate));
-        LocalDate earliestDate = earliestTerm.getDate();
-        startDate.setDate(new Date(earliestDate.getYear()-1900, earliestDate.getMonthValue()-1, earliestDate.getDayOfMonth()));
-        endDate.setDate(new java.util.Date());
+        Term minDate = Collections.min(termList, Comparator.comparing(Term::getDate));
+        Term maxDate = Collections.max(termList, Comparator.comparing(Term::getDate));
+        LocalDate minDatee = minDate.getDate();
+        LocalDate maxDatee = maxDate.getDate();
+        startDate.setDate(new Date(minDatee.getYear()-1900, minDatee.getMonthValue()-1, minDatee.getDayOfMonth()));
+        endDate.setDate(new Date(maxDatee.getYear()-1900, maxDatee.getMonthValue()-1, maxDatee.getDayOfMonth()));
+//        endDate.setDate(new java.util.Date());
 //        resetTableTerm(startDatee, endDatee);  //sql
 //        tableModel = (DefaultTableModel) tableChi.getModel();
 //        resetTableTermChis(startDatee, endDatee);
@@ -104,7 +108,7 @@ public class Home extends javax.swing.JFrame {
         textSearch = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         thongKe = new javax.swing.JButton();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jTabbedPaneThongKe = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jLabelTongDu1 = new javax.swing.JLabel();
         date = new com.toedter.calendar.JDateChooser();
@@ -273,8 +277,8 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jTabbedPane2.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-        jTabbedPane2.setPreferredSize(new java.awt.Dimension(712, 426));
+        jTabbedPaneThongKe.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jTabbedPaneThongKe.setPreferredSize(new java.awt.Dimension(712, 426));
 
         jLabelTongDu1.setText("Ngày");
 
@@ -302,7 +306,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Ngày", jPanel4);
+        jTabbedPaneThongKe.addTab("Ngày", jPanel4);
 
         jLabelTongDu2.setText("Tháng");
 
@@ -336,7 +340,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Tháng", jPanel5);
+        jTabbedPaneThongKe.addTab("Tháng", jPanel5);
 
         jLabelTongDu7.setText("Năm");
 
@@ -361,13 +365,13 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Năm", jPanel6);
+        jTabbedPaneThongKe.addTab("Năm", jPanel6);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+            .addComponent(jTabbedPaneThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(thongKe)
@@ -376,13 +380,13 @@ public class Home extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPaneThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(thongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 2, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.getAccessibleContext().setAccessibleName("Tháng");
+        jTabbedPaneThongKe.getAccessibleContext().setAccessibleName("Tháng");
 
         jTabbedPane1.addTab("Thống kê", jPanel3);
 
@@ -667,12 +671,29 @@ public class Home extends javax.swing.JFrame {
     }
     private void thongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongKeMouseClicked
         // TODO add your handling code here:
-        datee = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());
 //        resetTableTermThus(startDatee, endDatee);
 //        resetTableTermChis(startDatee, endDatee);
-//        thongKeTerm(datee);
+//        thongKeTerm(datee);      
+//        System.out.println("Tháng: " + currentMonth + currentYear1 + currentYear2);
+//        for(int i  = 0; i< termList.size(); i++){
+//            System.out.println(termList.get(i).getDate().getMonthValue());
+//        }
+        startThongKe();
     }//GEN-LAST:event_thongKeMouseClicked
-
+    public void startThongKe(){
+        datee = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());
+        int currentMonth = (int) thang.getValue();
+        int currentYear1 = (int) nam1.getValue();
+        int currentYear2 = (int) nam2.getValue();  
+        int selectedTabIndex = jTabbedPaneThongKe.getSelectedIndex();
+        if(selectedTabIndex == 0){
+            thongKeTerm(datee);
+        }else if(selectedTabIndex == 1){
+            thongKeTerm(currentMonth, currentYear1);
+        }else if(selectedTabIndex == 2){
+            thongKeTerm(currentYear2);
+        }
+    }
     private void textSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textSearchActionPerformed
@@ -748,6 +769,7 @@ public class Home extends javax.swing.JFrame {
             parser.parse(fis, handler);
             termList = handler.getTermList();
             resetTable(termList);
+            startThongKe();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {
@@ -808,28 +830,36 @@ public class Home extends javax.swing.JFrame {
 //        resetPrice();
 //    }
     
-//    public void thongKeTerm(LocalDate date) {
-//        mess.setText("");
+    public void thongKeTerm(LocalDate date) {
 //        List<Term> listTerms = termDao.search( date);
-//        tbThu.setRowCount(0);
-//        tongThu =0;
-//        for (Term term : termList) {
-//            if(term.getType().equals("thu")){
-//                tongThu += term.getPrice();
-//                tbThu.addRow(new Object[]{term.getId(), term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
-//            }
-//        }
-//        tbChi.setRowCount(0);
-//        tongChi =0;
-//        for (Term term : termList) {
-//            if(term.getType().equals("chi")){
-//                tongChi += term.getPrice();
-//                
-//                tbChi.addRow(new Object[]{term.getId(), term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
-//            }
-//        }
-//        resetPrice();
-//    }
+        List<Term> termList1 = new ArrayList<>();
+        for(int i = 0 ; i < termList.size(); i++){
+            if(termList.get(i).getDate().isEqual(date)){
+                termList1.add(termList.get(i));
+            }
+        }
+        resetTable(termList1);
+    }
+    public void thongKeTerm(int month, int nam1){
+        List<Term> termList1 = new ArrayList<>();
+        for(int i  = 0; i< termList.size(); i++){
+            if(termList.get(i).getDate().getMonthValue() == month 
+                && termList.get(i).getDate().getYear() == nam1){
+                termList1.add(termList.get(i));
+            }
+        }
+        resetTable(termList1);
+    }
+    
+    public void thongKeTerm(int nam2){
+        List<Term> termList1 = new ArrayList<>();
+        for(int i  = 0; i< termList.size(); i++){
+            if(termList.get(i).getDate().getYear() == nam2){
+                termList1.add(termList.get(i));
+            }
+        }
+        resetTable(termList1);
+    }
     
     /**
      * @param args the command line arguments
@@ -894,7 +924,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneKhoanChi3;
     private javax.swing.JScrollPane jScrollPaneKhoanThu3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPaneThongKe;
     private javax.swing.JLabel mess;
     private javax.swing.JSpinner nam1;
     private javax.swing.JSpinner nam2;
