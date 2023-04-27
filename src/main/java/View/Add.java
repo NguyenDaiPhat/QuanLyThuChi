@@ -211,8 +211,14 @@ public class Add extends javax.swing.JFrame {
         else {
             LocalDate dateOfBirthU = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());Term term = new Term();
             term = new Term();
-            int idd = home.tbChi.getRowCount() + home.tbThu.getRowCount()+1;
-            term.setId(idd);
+            int idd = 0;
+            int maxId = Integer.MIN_VALUE; // Khởi tạo giá trị maxId bằng giá trị nhỏ nhất của kiểu int
+            for (Term termm : home.termList) {
+                if (termm.getId() > maxId) {
+                    idd = termm.getId();
+                }
+            }
+            term.setId(idd+1);
             term.setType(type.getSelectedItem().toString());
             term.setDate(dateOfBirthU);
             term.setTitle(name.getText());
@@ -228,7 +234,7 @@ public class Add extends javax.swing.JFrame {
                 home.tbChi.addRow(new Object[]{idd, term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
                 this.dispose();
             }
-            home.resetTable();
+            home.resetTable(home.termList);
 //            termDao = new TermDao();
 //            if(termDao.save(term)){
 //                JOptionPane.showMessageDialog(null, "Thêm mới khoản " + term.getType()+" thành công !", "Thành công",JOptionPane.INFORMATION_MESSAGE);

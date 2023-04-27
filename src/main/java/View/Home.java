@@ -14,9 +14,12 @@ import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -54,6 +57,10 @@ public class Home extends javax.swing.JFrame {
         tbChi = (DefaultTableModel) tableChi.getModel();
         date.setDate(new java.util.Date());
         start();
+        Term earliestTerm = Collections.min(termList, Comparator.comparing(Term::getDate));
+        LocalDate earliestDate = earliestTerm.getDate();
+        startDate.setDate(new Date(earliestDate.getYear()-1900, earliestDate.getMonthValue()-1, earliestDate.getDayOfMonth()));
+        endDate.setDate(new java.util.Date());
 //        resetTableTerm(startDatee, endDatee);  //sql
 //        tableModel = (DefaultTableModel) tableChi.getModel();
 //        resetTableTermChis(startDatee, endDatee);
@@ -212,20 +219,20 @@ public class Home extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabelEndDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelStartDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(endDate, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(startDate, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(startDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(endDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(textSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(search)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -605,20 +612,30 @@ public class Home extends javax.swing.JFrame {
         if (tableThu.getSelectedRow() == -1 && tableChi.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Vui lòng chọn để xóa ! ", "Lỗi", JOptionPane.ERROR_MESSAGE);
         } else{
-            int id;
+            int idd;
             try{
-                id = Integer.parseInt(tableThu.getModel().getValueAt(tableThu.getSelectedRow(), 0).toString());
+                idd = Integer.parseInt(tableThu.getModel().getValueAt(tableThu.getSelectedRow(), 0).toString());
+                System.out.print(idd);
             }catch(Exception e){
-                id = Integer.parseInt(tableChi.getModel().getValueAt(tableChi.getSelectedRow(), 0).toString());
+                idd = Integer.parseInt(tableChi.getModel().getValueAt(tableChi.getSelectedRow(), 0).toString());
+                System.out.print(idd);
             }
 //            id = Integer.parseInt(tableChi.getModel().getValueAt(tableChi.getSelectedRow(), 0).toString());
             if (JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa " , "Xóa ", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 //                termDao.delete(id);
 //                resetTableTerm(startDatee, endDatee);
-                for(Term termm : termList){
-                    if(termm.getId() == id )termList.remove(termm);
+//                for(Term termm : termList){
+//                    System.out.print(idd);
+//                    if(termm.getId() == idd )termList.remove(termm);
+//                }
+            for (int i = 0; i < termList.size(); i++) {
+                Term termm = termList.get(i);
+                if (termm.getId() == idd) {
+                    termList.remove(i);
+                    break;
                 }
-            resetTable();
+            }
+            resetTable(termList);
             }
         }
     }//GEN-LAST:event_deleteMouseClicked
@@ -627,8 +644,23 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         startDatee = LocalDate.of(startDate.getDate().getYear()+1900,startDate.getDate().getMonth()+1,startDate.getDate().getDate());
         endDatee = LocalDate.of(endDate.getDate().getYear()+1900,endDate.getDate().getMonth()+1,endDate.getDate().getDate());
-//        resetTableTerm(startDatee, endDatee);
-        
+        if (startDatee.isBefore(endDatee)) {
+//     date1 nằm trước date2
+        System.out.print("truoc");
+        } else if (startDatee.isAfter(endDatee)) {
+    // date1 nằm sau date2
+        System.out.print("sau");
+        } else {
+    // date1 bằng date2
+        System.out.print("bang");
+        }
+        for(Term termm : termList){
+            if(term.getDate().isAfter(startDatee) && term.getDate().isBefore(endDatee) 
+                    || term.getDate().isEqual(startDatee) || term.getDate().isEqual(endDatee)){
+//              List<> list  
+                
+            }
+        }
     }//GEN-LAST:event_searchMouseClicked
 
     private void thongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongKeMouseClicked
@@ -713,7 +745,7 @@ public class Home extends javax.swing.JFrame {
             TermHandler handler = new TermHandler();
             parser.parse(fis, handler);
             termList = handler.getTermList();
-            resetTable();
+            resetTable(termList);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {
@@ -732,7 +764,7 @@ public class Home extends javax.swing.JFrame {
 //        JOptionPane.showMessageDialog(rootPane, "Import success!!!");
     }
     
-    public void resetTable(){
+    public void resetTable(List<Term> termList){
         tbThu.setRowCount(0);
             tongThu =0;
             for (Term term : termList) {

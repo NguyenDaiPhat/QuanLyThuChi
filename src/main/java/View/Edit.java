@@ -234,7 +234,7 @@ public class Edit extends javax.swing.JFrame {
 //                JOptionPane.showMessageDialog(null, "Cập nhật thông tin thất bại !", "Thất bại", JOptionPane.ERROR_MESSAGE);
 //            }
         }
-        home.resetTable();
+        home.resetTable(home.termList);
         this.dispose();
     }//GEN-LAST:event_editMouseClicked
 

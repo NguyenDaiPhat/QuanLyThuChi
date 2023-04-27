@@ -3,30 +3,9 @@
 <term>
 		<id>1</id>
 		<date>2023-04-27</date>
-		<title>êrf</title>
-		<price>12</price>
-               <description>ử</description>
-               <type>thu</type>
-	</term><term>
-		<id>2</id>
-		<date>2023-04-27</date>
-		<title>dfs</title>
-		<price>123</price>
-               <description>sdrfs</description>
-               <type>thu</type>
-	</term><term>
-		<id>3</id>
-		<date>2023-04-27</date>
-		<title>asdr</title>
-		<price>123</price>
-               <description>drfs</description>
-               <type>chi</type>
-	</term><term>
-		<id>5</id>
-		<date>2023-04-27</date>
-		<title>sadr</title>
-		<price>12000</price>
-               <description>awesaddfg</description>
+		<title>dsf</title>
+		<price>1</price>
+               <description>af</description>
                <type>thu</type>
 	</term>
 </termList>
