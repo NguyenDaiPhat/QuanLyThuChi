@@ -94,16 +94,4 @@ public class Term {
     public String toString() {
         return "Term{" + "id=" + id + ", date=" + date + ", title=" + title + ", price=" + price + ", description=" + description + ", type=" + type + '}';
     }
-
-//    public void setId(String value) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
-//
-//    public void setDate(String value) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
-//
-//    public void setPrice(String value) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
 }
