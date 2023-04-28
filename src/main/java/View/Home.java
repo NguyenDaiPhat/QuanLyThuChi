@@ -15,20 +15,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SpinnerModel;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -48,8 +43,8 @@ public class Home extends javax.swing.JFrame {
     public DefaultTableModel tbChi;
     List<Term> termList = new ArrayList<>();
     List<Term> termsInRange = new ArrayList<>();
-    private TermDao termDao;
-    private Term term;
+//    private TermDao termDao;
+//    private Term term;
     public int tongThu;
     public int tongChi;
     public int tongDu;
@@ -68,8 +63,8 @@ public class Home extends javax.swing.JFrame {
                 System.out.println("Panel được bấm vào!");
             }
         });
-        termDao = new TermDao();
-        term = new Term();
+//        termDao = new TermDao();
+//        term = new Term();
         tbThu = (DefaultTableModel) tableThu.getModel();
         tbChi = (DefaultTableModel) tableChi.getModel();
         date.setDate(new java.util.Date());
@@ -783,7 +778,8 @@ public void thongKeReset(){
             thongKeReset();
         }
         else if(selectedTabIndex == 0){
-            resetTable(termsInRange);
+            if(termsInRange.isEmpty())resetTable(termList);
+            else resetTable(termsInRange);
         }
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
