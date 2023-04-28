@@ -21,7 +21,7 @@ public class TermHandler extends DefaultHandler{
     List<Term> termList = new ArrayList<>();
     Term currentTerm = null;
     
-    boolean isId = false, isDate = false, isTitle = false, isPrice = false, isDescription, isType;
+    boolean isId = false, isDate = false, isTitle = false, isPrice = false, isDescription = false, isType = false;
     
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {

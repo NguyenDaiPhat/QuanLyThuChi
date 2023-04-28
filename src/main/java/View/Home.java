@@ -55,14 +55,6 @@ public class Home extends javax.swing.JFrame {
     int currentYear = LocalDate.now().getYear();
     public Home() {
         initComponents();
-        JPanel panel = (JPanel)jTabbedPaneThongKe.getComponent(1); // Lấy panel đầu tiên trong JTablePanel
-        panel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                // Xử lý sự kiện khi bấm vào panel
-                System.out.println("Panel được bấm vào!");
-            }
-        });
 //        termDao = new TermDao();
 //        term = new Term();
         tbThu = (DefaultTableModel) tableThu.getModel();
@@ -697,8 +689,8 @@ public class Home extends javax.swing.JFrame {
 //        }
         thongKeReset();
     }//GEN-LAST:event_thongKeMouseClicked
-public void thongKeReset(){
-    datee = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());
+    public void thongKeReset(){
+        datee = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());
         int currentMonth = (int) thang.getValue();
         int currentYear1 = (int) nam1.getValue();
         int currentYear2 = (int) nam2.getValue();  
@@ -773,6 +765,7 @@ public void thongKeReset(){
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         // TODO add your handling code here:
+        // click tab tren
         int selectedTabIndex = jTabbedPane1.getSelectedIndex();
         if(selectedTabIndex == 1){
             thongKeReset();
@@ -793,7 +786,7 @@ public void thongKeReset(){
     }
     
     public void start(){
-        mess.setText("");
+        //manhinh hien thi
         FileInputStream fis = null;
         try {
             // TODO add your handling code here:

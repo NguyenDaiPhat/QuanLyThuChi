@@ -42,5 +42,12 @@
 		<price>12</price>
                <description>efd</description>
                <type>thu</type>
+	</term><term>
+		<id>8</id>
+		<date>2023-04-28</date>
+		<title></title>
+		<price>100</price>
+               <description></description>
+               <type>thu</type>
 	</term>
 </termList>

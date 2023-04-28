@@ -203,10 +203,12 @@ public class Add extends javax.swing.JFrame {
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
         // TODO add your handling code here:
         if(isEmptyValue()){
-            mess.setText("Bạn cần nhập đủ tất cả thông tin");
+//            mess.setText("Bạn cần nhập giá tiền");
+            JOptionPane.showMessageDialog(null, "Chưa nhập giá !", "Thất bại", JOptionPane.ERROR_MESSAGE);
         }
         else if(!isNumeric(price.getText())){
-            mess.setText("Giá tiền cần phải là số");
+//            mess.setText("Giá tiền cần phải là số");
+            JOptionPane.showMessageDialog(null, "Giá phải là số !", "Thất bại", JOptionPane.ERROR_MESSAGE);
         }
         else {
             LocalDate dateOfBirthU = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());Term term = new Term();
@@ -226,15 +228,16 @@ public class Add extends javax.swing.JFrame {
             term.setDescription(description.getText());
             home.termList.add(term);
 //            System.out.println(type.getSelectedItem().toString());
-            if(type.getSelectedItem().toString().equals("Thu")){
-                home.tbThu.addRow(new Object[]{idd, term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
-                this.dispose();
-            }
-            else{
-                home.tbChi.addRow(new Object[]{idd, term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
-                this.dispose();
-            }
+//            if(type.getSelectedItem().toString().equals("Thu")){
+//                home.tbThu.addRow(new Object[]{idd, term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
+//                this.dispose();
+//            }
+//            else{
+//                home.tbChi.addRow(new Object[]{idd, term.getDate(), term.getTitle(), term.getPrice(), term.getDescription()});
+//                this.dispose();
+//            }
             home.resetTable(home.termList);
+            this.dispose();
 //            termDao = new TermDao();
 //            if(termDao.save(term)){
 //                JOptionPane.showMessageDialog(null, "Thêm mới khoản " + term.getType()+" thành công !", "Thành công",JOptionPane.INFORMATION_MESSAGE);
@@ -282,8 +285,8 @@ public class Add extends javax.swing.JFrame {
         });
     }
     boolean isEmptyValue(){
-       if(name.getText().equals("")||price.getText().equals("")
-         ||description.getText().equals("")){
+       if(price.getText().equals(""))
+         {
            return true;
        }
         return false;

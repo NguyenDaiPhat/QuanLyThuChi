@@ -6,6 +6,7 @@ package View;
 
 import Dao.TermDao;
 import Entity.Term;
+import static View.Add.isNumeric;
 import java.sql.Date;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
@@ -211,8 +212,13 @@ public class Edit extends javax.swing.JFrame {
 
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
         // TODO add your handling code here:
-        if(price.getText().equals("")){
-            mess.setText("Bạn cần nhập giá tiền");
+        if(isEmptyValue()){
+//            mess.setText("Bạn cần nhập giá tiền");
+            JOptionPane.showMessageDialog(null, "Chưa nhập giá !", "Thất bại", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!isNumeric(price.getText())){
+//            mess.setText("Giá tiền cần phải là số");
+            JOptionPane.showMessageDialog(null, "Giá phải là số !", "Thất bại", JOptionPane.ERROR_MESSAGE);
         }
         else{
             LocalDate dateOfBirthU = LocalDate.of(date.getDate().getYear()+1900,date.getDate().getMonth()+1,date.getDate().getDate());
@@ -225,6 +231,8 @@ public class Edit extends javax.swing.JFrame {
                     term1.setDescription(description.getText());
                 }
             }
+            home.resetTable(home.termList);
+            this.dispose();
 //            if(termDao.update(term1)){
 //                JOptionPane.showMessageDialog(null, "Cập nhật thông tin thành công !", "Thành công",JOptionPane.INFORMATION_MESSAGE);
 //                home.resetTableTerm(home.startDatee, home.endDatee);
@@ -234,10 +242,23 @@ public class Edit extends javax.swing.JFrame {
 //                JOptionPane.showMessageDialog(null, "Cập nhật thông tin thất bại !", "Thất bại", JOptionPane.ERROR_MESSAGE);
 //            }
         }
-        home.resetTable(home.termList);
-        this.dispose();
     }//GEN-LAST:event_editMouseClicked
-
+    boolean isEmptyValue(){
+       if(price.getText().equals(""))
+         {
+           return true;
+       }
+        return false;
+    }
+    
+    public static boolean isNumeric(String str) { 
+        try {  
+            Double.parseDouble(str);  
+            return true;
+        }catch(NumberFormatException e){  
+            return false;  
+       }
+    }  
     
     /**
      * @param args the command line arguments
