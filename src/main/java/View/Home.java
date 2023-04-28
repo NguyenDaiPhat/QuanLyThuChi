@@ -4,7 +4,7 @@
  */
 package View;
 
-import Dao.TermDao;
+//import Dao.TermDao;
 import Dao.TermHandler;
 import Entity.Term;
 import java.awt.event.MouseAdapter;
@@ -778,7 +778,7 @@ public class Home extends javax.swing.JFrame {
 
     public void resetPrice(){
         tongDu = tongThu - tongChi;
-        if(tongDu <0) mess.setText("SOS, tiền chi nhiều hơn thu");
+        if(tongDu <0) mess.setText("warning!! Chi hơn Thu!!");
         else mess.setText("");
         thu.setText(String.valueOf(tongThu));
         chi.setText(String.valueOf(tongChi));

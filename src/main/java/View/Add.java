@@ -4,7 +4,7 @@
  */
 package View;
 
-import Dao.TermDao;
+//import Dao.TermDao;
 import Entity.Term;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
@@ -20,7 +20,7 @@ public class Add extends javax.swing.JFrame {
      */
    
     private Home home;
-    private TermDao termDao;
+//    private TermDao termDao;
     private Term term;
     
     public Add(Home home) {

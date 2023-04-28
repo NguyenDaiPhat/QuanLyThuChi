@@ -2,52 +2,38 @@
 <termList>
 <term>
 		<id>1</id>
-		<date>2023-04-27</date>
-		<title>dsf</title>
-		<price>1</price>
-               <description>af</description>
-               <type>thu</type>
-	</term><term>
-		<id>2</id>
-		<date>2023-04-28</date>
-		<title>ewr</title>
-		<price>12</price>
-               <description>saf</description>
-               <type>thu</type>
-	</term><term>
-		<id>3</id>
-		<date>2023-04-29</date>
-		<title>wqre</title>
-		<price>1234</price>
-               <description>24</description>
+		<date>2023-04-23</date>
+		<title>tiền trọ</title>
+		<price>2000000</price>
+               <description>null</description>
                <type>chi</type>
 	</term><term>
-		<id>4</id>
-		<date>2023-04-27</date>
-		<title>sf</title>
-		<price>12</price>
-               <description>sdfg</description>
+		<id>2</id>
+		<date>2023-04-24</date>
+		<title>tiền xăng</title>
+		<price>60000</price>
+               <description>null</description>
+               <type>chi</type>
+	</term><term>
+		<id>3</id>
+		<date>2023-04-25</date>
+		<title>tiền lương</title>
+		<price>4000000</price>
+               <description>null</description>
                <type>thu</type>
+	</term><term>
+		<id>5</id>
+		<date>2023-04-28</date>
+		<title>tiền đi viện</title>
+		<price>800000</price>
+               <description>null</description>
+               <type>chi</type>
 	</term><term>
 		<id>6</id>
-		<date>2023-05-24</date>
-		<title>wqe</title>
-		<price>12</price>
-               <description>wqr</description>
-               <type>thu</type>
-	</term><term>
-		<id>7</id>
-		<date>2023-05-16</date>
-		<title>12</title>
-		<price>12</price>
-               <description>efd</description>
-               <type>thu</type>
-	</term><term>
-		<id>8</id>
 		<date>2023-04-28</date>
-		<title></title>
-		<price>100</price>
-               <description></description>
-               <type>thu</type>
+		<title>tiền mua máy tính</title>
+		<price>7000000</price>
+               <description>null</description>
+               <type>chi</type>
 	</term>
 </termList>

@@ -4,7 +4,7 @@
  */
 package View;
 
-import Dao.TermDao;
+//import Dao.TermDao;
 import Entity.Term;
 import static View.Add.isNumeric;
 import java.sql.Date;
@@ -22,9 +22,9 @@ public class Edit extends javax.swing.JFrame {
      */
     private Home home;
     private Term term;
-    private TermDao termDao;
+//    private TermDao termDao;
     public Edit(Term term, Home home) {
-        termDao=new TermDao();
+//        termDao=new TermDao();
         this.term = term;
         initComponents();
         this.home = home;
